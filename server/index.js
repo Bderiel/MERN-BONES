@@ -11,9 +11,11 @@ const User = require('./models/user');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
+// used to serialize the user for the session
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
+
 // used to deserialize the user
 passport.deserializeUser((id, done) => {
   User.findById(id, (err, user) => {
@@ -22,12 +24,12 @@ passport.deserializeUser((id, done) => {
 });
 
 app.use(morgan('dev'));
-app.use(cookieParser()); // read cookies (needed for auth)
 
 app.use(session({ secret: process.env.SESSION_SECRET || 'Trabajo' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(bodyParser.json());
+app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '../public')));

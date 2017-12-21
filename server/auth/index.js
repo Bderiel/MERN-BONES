@@ -29,7 +29,7 @@ router.post('/login', (req, res, next) => {
       } else if (!user.validPassword(req.body.password)) {
         res.status(401).send('Incorrect password');
       } else {
-        req.login(user, err => (err ? next(err) : res.json(user.email)));
+        req.login(user, err => (err ? next(err) : res.json(user)));
       }
     })
     .catch(next);
@@ -42,10 +42,8 @@ router.post('/logout', (req, res) => {
 
 
 router.get('/me', (req, res) => {
-  res.json({
-    name: req.user.name,
-    id: req.user.id,
-  });
+  console.log(req.user,'who am i')
+  res.json(req.user)
 });
 
 module.exports = router;
