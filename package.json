@@ -20,6 +20,7 @@
     "express-session": "^1.15.6",
     "history": "^4.7.2",
     "mongoose": "^4.13.7",
+    "mongoose-unique-validator": "^1.0.6",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0",
