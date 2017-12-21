@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Router } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { LaunchPad } from './components';
+import { LaunchPad, AuthForm } from './components';
 import history from './history';
 
 class Routes extends Component {
@@ -14,7 +14,8 @@ class Routes extends Component {
     return (
       <Router history={history}>
         <Switch>
-          <Route path="/" component={LaunchPad} />
+          <Route exact path="/login" component={AuthForm} />
+          <Route exact path="/" component={LaunchPad} />
         </Switch>
       </Router>
     );
