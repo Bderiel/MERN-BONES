@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 
 const app = express();
@@ -31,4 +32,13 @@ app.use((err, req, res) => {
 });
 
 
-app.listen(3000, () => console.log('We really out here in port 3000!'));
+mongoose.connect('mongodb://localhost/mydatabase', (err) => {
+  if (err) {
+    console.log('Unable to connect to Mongo.');
+  } else {
+    app.listen(3000, () => {
+      console.log('Listening on port 3000...');
+    });
+  }
+});
+
