@@ -1,10 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/user');
 
-// router.get('/', (req, res, next) => {
-//   User.find
-// });
-
 router.post('/signup', (req, res, next) => {
   const newUser = new User({ email: req.body.email });
   newUser.password = newUser.generateHash(req.body.password);
@@ -42,8 +38,7 @@ router.post('/logout', (req, res) => {
 
 
 router.get('/me', (req, res) => {
-  console.log(req.user,'who am i')
-  res.json(req.user)
+  res.json(req.user);
 });
 
 module.exports = router;
