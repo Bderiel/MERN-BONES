@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { logout } from '../redux';
 
 
 const LaunchPad = function (props) {
@@ -14,12 +15,13 @@ const LaunchPad = function (props) {
       <br />
       <NavLink to="/login">SignUp</NavLink>
       <h3>{props.user.email} is logged in</h3>
+      {props.user.email ? <button onClick={props.logout}>Log Out</button> : <div />}
     </Fragment>
   );
 };
 
 const mapState = ({ user }) => ({ user });
-const mapDispatch = {};
+const mapDispatch = { logout };
 export default connect(mapState, mapDispatch)(LaunchPad);
 
 LaunchPad.propTypes = {
