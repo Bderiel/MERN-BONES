@@ -13,7 +13,7 @@ const LaunchPad = function (props) {
       <br />
       <NavLink to="/login">LogIn</NavLink>
       <br />
-      <NavLink to="/login">SignUp</NavLink>
+      <NavLink to="/signup">SignUp</NavLink>
       <h3>{props.user.email} is logged in</h3>
       {props.user.email ? <button onClick={props.logout}>Log Out</button> : <div />}
     </Fragment>

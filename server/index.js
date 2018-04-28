@@ -57,12 +57,12 @@ app.use((err, req, res) => {
 });
 
 
-mongoose.connect('mongodb://localhost/mydatabase', (err) => {
+mongoose.connect('mongodb://localhost/mydatabase', { useMongoClient: true }, (err) => {
   if (err) {
     console.log('Unable to connect to Mongo.');
   } else {
     app.listen(PORT, () => {
-      console.log('Listening on port 3000...');
+      console.log(`Listening on port ${PORT}...`);
     });
   }
 });
